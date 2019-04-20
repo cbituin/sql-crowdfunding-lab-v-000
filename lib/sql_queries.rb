@@ -22,7 +22,7 @@ ON Projects.id = Pledges.project_id GROUP BY title ORDER BY over_goal;"
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_amount_and_users_name
-"SELECT Users.name, Pledges.amount FROM users INNER JOIN pledges ON Users.id = Pledges.user_id ORDER BY name, amount;"
+"SELECT Users.name, SUM(amount) as amount FROM users INNER JOIN pledges ON Users.id = Pledges.user_id GROUP BY name ORDER BY amount, name;"
 end
 
 def selects_the_category_names_and_pledge_amounts_of_all_pledges_in_the_music_category
